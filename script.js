@@ -1,5 +1,22 @@
 let taskList = [];
 
+// Load tasks on page load
+window.addEventListener("load", loadTask);
+
+// Add task when add button is clicked
+const addBtn = document.getElementById("addbtn");
+addBtn.addEventListener("click", addTask);
+
+// Load tasks from local storage
+function loadTask() {
+  const storedTask = localStorage.getItem("taskList");
+
+  if (storedTask) {
+    taskList = JSON.parse(storedTask);
+    showList();
+  }
+}
+
 // Add task to list
 function addTask() {
 
@@ -24,7 +41,7 @@ function addTask() {
 
   // Show updated list
   showList();
-  showToast("Task Added successfully");
+  showToast("Task Added Successfully");
 }
 
 // Show task list
@@ -39,14 +56,13 @@ function showList() {
     li.textContent = task;
     ul.appendChild(li);
 
-    
-
     // Add delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.classList.add("delete");
     deleteBtn.addEventListener("click", () => confirmDelete(index));
     li.appendChild(deleteBtn);
+    
     // Add edit button
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
@@ -94,7 +110,7 @@ function saveTask(index) {
 
   // Show updated list
   showList();
-  showToast("Task Updated successfully");
+  showToast("Task Updated Successfully");
 }
 
 // Confirm task deletion
@@ -117,23 +133,6 @@ function deleteTask(index) {
   showList();
 }
 
-// Load tasks from local storage
-function loadTask() {
-  const storedTask = localStorage.getItem("taskList");
-
-  if (storedTask) {
-    taskList = JSON.parse(storedTask);
-    showList();
-  }
-}
-
-// Load tasks on page load
-window.addEventListener("load", loadTask);
-
-// Add task when add button is clicked
-const addBtn = document.getElementById("addbtn");
-addBtn.addEventListener("click", addTask);
-
 function deleteToast(notification) {
   const toastDel = document.createElement('div');  //is to organize the toast in a form  
   toastDel.classList.add('toastDel');
@@ -154,7 +153,7 @@ function showToast(notification) {
   }, 2000)
 }
 
-// const input = document.getElementById("inputfield");
+const input = document.getElementById("inputfield");
 input.addEventListener("keyup", function(event) {
   if (event.key === "Enter") {
     addTask();

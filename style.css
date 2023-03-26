@@ -1,0 +1,140 @@
+.container {
+    border: solid 1px rgba(234, 64, 164, 0.75), rgba(58, 130, 238, 0.75);
+    background-image: linear-gradient(to bottom right, rgba(58, 130, 238, 0.75), rgba(234, 64, 164, 0.75));
+    border-radius: 8px;
+    margin: auto;
+    padding: 10px;
+    width: 55%;
+}
+
+#form {
+    display: flex;
+}
+
+body {
+    background-image: linear-gradient(to top right, rgba(58, 130, 238, 0.75), hotpink);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    border: 3px solid blueviolet;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 8px;
+    padding: 3.8px;
+    text-align: center;
+    margin-left: 17%;
+    margin-right: 17%;
+}
+
+.input {
+    border: 3px solid #ea40a4;
+    border-radius: 9px;
+    padding: 6px;
+    margin: auto;
+    width: 65%;
+    height: 70%;
+    align-items: center;
+    background-color: #ea40a4;
+    align-items: center;
+}
+
+#inputfield {
+    border: 3px solid white;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 2px;
+    width: 80%;
+    height: 85%;
+    background-color: white;
+}
+
+#addbtn {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 4px;
+    margin: 2px;
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+#savebtn {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 4px;
+    margin: 2px;
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.insidecontainer {
+    border: 3px solid #ea40a4;
+    border-radius: 8px;
+    padding: 4px;
+    background-color: #ea40a4;
+    margin: auto;
+    width: 65%;
+    padding: 4px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#list li {
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    font-size: larger;
+    padding: 10px;
+    margin-top: 3%;
+    margin-bottom: 5px;
+    margin-left: 0%;
+}
+
+li button {
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    font-size: medium;
+    color: black;
+    cursor: pointer;
+    padding: 5px 10px;
+    float: right;
+}
+
+li button.edit {
+    background-color: #2196F3;
+    margin-right: 3%;
+}
+
+li button.delete {
+    background-color: #2196F3;
+}
+
+.toastDel {
+    position: absolute;
+    bottom: 70%;
+    left: 80%;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+}
+
+.toastAdd {
+    position: absolute;
+    bottom: 70%;
+    left: 80%;
+    padding: 10px 20px;
+    background-color: rgb(42, 221, 26);
+    color: white;
+    border-radius: 10px;
+}

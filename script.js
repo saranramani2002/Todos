@@ -18,24 +18,25 @@ function loadTask() {
 }
 
 // Add task to list
-function addTask() {
+function addTask(e) {
+  e.preventDefault();
 
   const input = document.getElementById("inputfield");
-  const task = input.value.trim();
+  const task = input.value.trim().toLowerCase(); // Convert new task to lowercase
 
   // Check if input is empty
   if (task === "") {
     alert("Please enter a task!");
     return;
   }
-  // Check if task already exists in the list
-  if (taskList.includes(task)) {
+  // Check if task already exists in the list (case-insensitive)
+  if (taskList.some(existingTask => existingTask.toLowerCase() === task)) {
     alert("Task already exists in the list!");
     return;
   }
 
   // Add task to list
-  taskList.push(task);
+  taskList.push(input.value);
   localStorage.setItem("taskList", JSON.stringify(taskList));
   input.value = "";
 
@@ -43,6 +44,7 @@ function addTask() {
   showList();
   showToast("Task Added Successfully");
 }
+
 
 // Show task list
 function showList() {
@@ -88,13 +90,15 @@ function editTask(index) {
 
 // Save task after editing
 function saveTask(index) {
+  event.preventDefault(); // prevent page reload
+
   const input = document.getElementById("inputfield");
   const task = input.value.trim();
 
   // Check if input is empty
   if (task === "") {
     alert("Please enter a task!");
-    return;
+      return;
   }
 
   // Save task to list
@@ -112,6 +116,7 @@ function saveTask(index) {
   showList();
   showToast("Task Updated Successfully");
 }
+
 
 // Confirm task deletion
 function confirmDelete(index) {
@@ -154,9 +159,17 @@ function showToast(notification) {
 }
 
 const input = document.getElementById("inputfield");
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
     addTask();
     event.preventDefault(); // Prevent default behavior
   }
 });
+
+// const edit = document.getElementsByClassName("edit");
+// edit.addEventListener("keydown", function(event) {
+//   if (event.key === "Enter") {
+//     editTask();
+//     event.preventDefault(); // Prevent default behavior
+//   }
+// });

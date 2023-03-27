@@ -74,6 +74,25 @@ function showList() {
   });
 }
 
+// Confirm task deletion
+function confirmDelete(index) {
+  const confirmDelete = confirm(`Are you sure you want to delete Task ?`);
+
+  if (confirmDelete) {
+    deleteTask(index);
+  }
+}
+
+// Delete task
+function deleteTask(index) {
+  taskList.splice(index, 1);
+  localStorage.setItem("taskList", JSON.stringify(taskList));
+  deleteToast("Task Deleted Successfully")
+
+  // Show updated list
+  showList();
+}
+
 // Edit task
 function editTask(index) {
   const input = document.getElementById("inputfield");
@@ -117,29 +136,8 @@ function saveTask(index) {
   showToast("Task Updated Successfully");
 }
 
-
-// Confirm task deletion
-function confirmDelete(index) {
-  const task = taskList[index];
-  const confirmDelete = confirm(`Are you sure you want to delete Task ?`);
-
-  if (confirmDelete) {
-    deleteTask(index);
-  }
-}
-
-// Delete task
-function deleteTask(index) {
-  taskList.splice(index, 1);
-  localStorage.setItem("taskList", JSON.stringify(taskList));
-  deleteToast("Task Deleted Successfully")
-
-  // Show updated list
-  showList();
-}
-
 function deleteToast(notification) {
-  const toastDel = document.createElement('div');  //is to organize the toast in a form  
+  const toastDel = document.createElement('div');  //is to shows the toast in a form  
   toastDel.classList.add('toastDel');
   toastDel.textContent = notification;
   document.body.appendChild(toastDel);
@@ -149,7 +147,7 @@ function deleteToast(notification) {
 }
 
 function showToast(notification) {
-  const toastAdd = document.createElement('div');  //is to organize the toast in a form  
+  const toastAdd = document.createElement('div');  //is to shows the toast in a form  
   toastAdd.classList.add('toastAdd');
   toastAdd.textContent = notification;
   document.body.appendChild(toastAdd);
@@ -165,11 +163,3 @@ input.addEventListener("keydown", function(event) {
     event.preventDefault(); // Prevent default behavior
   }
 });
-
-// const edit = document.getElementsByClassName("edit");
-// edit.addEventListener("keydown", function(event) {
-//   if (event.key === "Enter") {
-//     editTask();
-//     event.preventDefault(); // Prevent default behavior
-//   }
-// });
